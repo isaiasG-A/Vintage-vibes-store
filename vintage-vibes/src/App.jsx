@@ -8,12 +8,13 @@ import ProductDetails from './components/ProductDetails';
 function App() {
 const [items, getItems] = useState([]);  
 const [itemId, getItemId] = useState();
+const [category, setCategory] = useState("")
 
 useEffect(() => {
 
 async function fetchItems() {
   try {
-    const response = await fetch('https://fakestoreapi.com/products');
+    const response = await fetch(`https://fakestoreapi.com/products${category}`);
     const result = await response.json()
     
     getItems(result)
@@ -22,12 +23,12 @@ async function fetchItems() {
     }
   }
   fetchItems();
-},[])
+},[items])
 
   return (
     <>
     <Routes>
-      <Route path='/' element={<Products items={items} getItemId={getItemId}/>}/>
+      <Route path='/' element={<Products items={items} getItemId={getItemId} setCategory={setCategory}/>}/>
       <Route path='/details' element={<ProductDetails itemId={itemId}/>} />
     </Routes>
     </>

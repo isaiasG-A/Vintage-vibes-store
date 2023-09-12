@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 
-function Products({ items, getItemId }) {
+function Products({ items, getItemId, setCategory }) {
   const [searchTerm, setSearchTerm] = useState(" ");
 
   function itemMatch(item, text) {
@@ -24,6 +24,13 @@ function Products({ items, getItemId }) {
           />
         </label>
       </form>
+      <div>
+        <button onClick={() => setCategory("")}>All</button>
+        <button onClick={() => setCategory("/category/men's clothing")}>Men's Clothing</button>
+        <button onClick={() => setCategory("/category/women's clothing")}>Women's Clothing</button>
+        <button onClick={() => setCategory("/category/jewelery")}>Jewelery</button>
+        <button onClick={() => setCategory("/category/electronics")}>Electronics</button>
+      </div>
       {
         displayItem.map((item) => {
           return <div key={item.id}>
