@@ -18,14 +18,18 @@ function ProductDetails({ itemId }) {
     }
     getProduct()
   }, [])
+
   return (
     <div>
-        <h4>Category: {item.category}</h4>
-        <h2>{item.title}</h2>
-        <img src={item.image} alt="" />
-        <h3> {item.description}</h3>
-        <h5>${item.price}</h5>
-        <Link onClick={() => setItem({})} to="/">Home</Link> 
+      <h4>Category: {item.category}</h4>
+      <h2>{item.title}</h2>
+      <img src={item.image} alt="" />
+      <h3> {item.description}</h3>
+      <h5>${item.price}</h5>
+      {
+        savedUser !== "undefined" ? <button>Add to Cart</button> : null
+      }
+      <Link onClick={() => setItem({})} to="/">Home</Link> 
     </div>
   )
 }
