@@ -5,23 +5,15 @@ function Cart() {
   const [savedKeys, setSavedKeys] = useState([]);
   
   useEffect(() => {
-    // Load data from localStorage on component mount
     const savedData = JSON.parse(localStorage.getItem('cartIdArr')) || [];
     setSavedKeys(savedData);
   }, []);
 
-
-  //const getCartId = JSON.parse(localStorage.getItem('cartIdArr'));
-
-  // console.log(it)
-
   function deleteItem(key) {
-    console.log(key)
-    // localStorage.removeItem(`${key}`);
-    // let idArr = [...getCartId]
-    // delete idArr.key
-
-    // return localStorage.setItem("cartIdArr", JSON.stringify(idArr))
+    const updatedKeys = savedKeys.filter(num => num != key)
+    setSavedKeys(updatedKeys);
+    localStorage.setItem('cartIdArr', JSON.stringify(updatedKeys));
+    return localStorage.removeItem(`${key}`);
   }
 
   return (

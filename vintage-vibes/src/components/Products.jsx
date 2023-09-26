@@ -17,9 +17,6 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
     localStorage.setItem(`${key}`, JSON.stringify(val)); 
   }
 
-  console.log("localArr", cartId)
-  console.log("storeArr", localStorage.getItem("cartIdArr"))
-
   const filteredItems = items.filter((item) => itemMatch(item, searchTerm));
   const displayItem = searchTerm.length ? filteredItems : items;
 

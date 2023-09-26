@@ -43,13 +43,15 @@ async function fetchItems() {
     location.reload();
   }
 
+  console.log({...localStorage})
+
   return (
     <>
     <Routes>
       <Route path='/' element={<Products items={items} getItemId={getItemId} setCategory={setCategory} savedUser={savedUser} logout={logout} accessToken={accessToken} setCartId={setCartId} cartId={cartId}/>}/>
       <Route path="/login" element={<Login setToken={setToken} setUser={setUser}/>}/>
       <Route path='/details' element={<ProductDetails itemId={itemId} logout={logout}/>} />
-      <Route path='/cart' element={<Cart/>}/>
+      <Route path='/cart' element={<Cart />}/>
     </Routes>
     </>
   )
