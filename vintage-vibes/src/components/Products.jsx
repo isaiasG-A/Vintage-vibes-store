@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 
-function Products({ items, getItemId, setCategory, savedUser, logout, accessToken, cartId, setCartId }) {
+function Products({ items, getItemId, setCategory, savedUser, logout, accessToken, cartId, setCartId}) {
   const [searchTerm, setSearchTerm] = useState(" ");
 
   function itemMatch(item, text) {
@@ -11,11 +11,14 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
   }
 
   function itemSetUp(key, val) {
-    setCartId([...cartId, key])
-    localStorage.setItem(`${key}`, JSON.stringify(val))
-    return localStorage.setItem('cartIdArr', JSON.stringify(cartId));
-    
+    const updateKeys = [...cartId, key]
+    setCartId(updateKeys);
+    localStorage.setItem('cartIdArr', JSON.stringify(updateKeys));
+    localStorage.setItem(`${key}`, JSON.stringify(val)); 
   }
+
+  console.log("localArr", cartId)
+  console.log("storeArr", localStorage.getItem("cartIdArr"))
 
   const filteredItems = items.filter((item) => itemMatch(item, searchTerm));
   const displayItem = searchTerm.length ? filteredItems : items;
@@ -53,7 +56,7 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
           const id = item.id;
           const title = item.title;
           const image = item.image;
-
+          
           return <div key={id}>
             <h2>{title}</h2>
             <Link onClick={() => getItemId(id)} to="/details"><img src={image} alt="" /></Link>
@@ -63,9 +66,6 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
           </div>
         })
       }
-
-
-
 
       {/* {
        items.map((item) => {

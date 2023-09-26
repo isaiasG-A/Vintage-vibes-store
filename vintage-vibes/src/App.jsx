@@ -18,10 +18,8 @@ const [cartId, setCartId] = useState([]);
 localStorage.setItem('access_token', `${token}`);
 localStorage.setItem('user', user);
 
-
 const savedUser = localStorage.getItem('user');
 const accessToken = localStorage.getItem('access_token');
-const getCartId = JSON.parse(localStorage.getItem('cartIdArr'));
 
 useEffect(() => {
 
@@ -36,7 +34,7 @@ async function fetchItems() {
     }
   }
   fetchItems();
-},[items])
+},[])
 
   function logout() {
     localStorage.removeItem(token);
@@ -48,10 +46,10 @@ async function fetchItems() {
   return (
     <>
     <Routes>
-      <Route path='/' element={<Products items={items} getItemId={getItemId} setCategory={setCategory} savedUser={savedUser} logout={logout} accessToken={accessToken} cartId={cartId} setCartId={setCartId}/>}/>
+      <Route path='/' element={<Products items={items} getItemId={getItemId} setCategory={setCategory} savedUser={savedUser} logout={logout} accessToken={accessToken} setCartId={setCartId} cartId={cartId}/>}/>
       <Route path="/login" element={<Login setToken={setToken} setUser={setUser}/>}/>
       <Route path='/details' element={<ProductDetails itemId={itemId} logout={logout}/>} />
-      <Route path='/cart' element={<Cart getCartId={getCartId}/>}/>
+      <Route path='/cart' element={<Cart/>}/>
     </Routes>
     </>
   )
