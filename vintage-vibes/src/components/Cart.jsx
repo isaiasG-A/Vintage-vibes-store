@@ -18,9 +18,6 @@ function Cart({setCartId}) {
     return localStorage.removeItem(`${key}`);
   }
 
-  console.log(savedKeys)
-  console.log({...localStorage})
-
   function placeOrder() {
     for(let i = 0; i <= savedKeys.length; i++) {
       console.log(savedKeys[i])
@@ -31,6 +28,11 @@ function Cart({setCartId}) {
     setCartId([])
     return navigate("/completed")
   }
+  const nonDuplicates = savedKeys => savedKeys.filter((item, index) => savedKeys.indexOf(item) === index)
+  const keys = nonDuplicates(savedKeys); 
+
+  // const findDuplicates = savedKeys => savedKeys.filter((item, index) => savedKeys.indexOf(item) !== index)
+  // const duplicatedKeys = findDuplicates(savedKeys)
 
   return (
     <div>
@@ -39,13 +41,19 @@ function Cart({setCartId}) {
         savedKeys.length === 0 ? null : <button onClick={placeOrder} to="/completed">Place Order</button>
       }
       {
-       savedKeys.map((num) => {
+       keys.map((num) => {
+        const findDuplicates = savedKeys => savedKeys.filter((item) => item === num)
+        const duplicatedKeys = findDuplicates(savedKeys)
+        const quantity = duplicatedKeys.length;
+
         const cartData = JSON.parse(localStorage.getItem(`${num}`));
         return (
           <div>
             <h2>{cartData.title}</h2>
             <img src={cartData.image} alt="" />
-            <h5>Quantity:{}</h5>
+            <h5>Quantity:{quantity}</h5>
+            <button>+</button>
+            <button>-</button>
             <h5>${cartData.price}</h5>
             <button onClick={() => deleteItem(cartData.id)}>Remove</button>
           </div>
@@ -55,6 +63,5 @@ function Cart({setCartId}) {
     </div>
   )
 }
-
 
 export default Cart
