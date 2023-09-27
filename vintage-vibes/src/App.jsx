@@ -52,7 +52,7 @@ async function fetchItems() {
       <Route path='/' element={<Products items={items} getItemId={getItemId} setCategory={setCategory} savedUser={savedUser} logout={logout} accessToken={accessToken} setCartId={setCartId} cartId={cartId}/>}/>
       <Route path="/login" element={<Login setToken={setToken} setUser={setUser}/>}/>
       <Route path='/details' element={<ProductDetails itemId={itemId} logout={logout}/>} />
-      <Route path='/cart' element={<Cart setCartId={setCartId}/>}/>
+      <Route path='/cart' element={<Cart setCartId={setCartId} cartId={cartId}/>}/>
       <Route path='/completed' element={<OrderCompleted />}/>
     </Routes>
     </>
