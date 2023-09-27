@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 
 
 function Cart({setCartId, cartId}) {
@@ -15,10 +15,6 @@ function Cart({setCartId, cartId}) {
   const nonDuplicates = savedKeys => savedKeys.filter((item, index) => savedKeys.indexOf(item) === index)
    const keys = nonDuplicates(savedKeys); 
   
-  // const nonDuplicates = savedKeys => savedKeys.filter((item, index) => savedKeys.indexOf(item) === index)
-  // const keys = nonDuplicates(savedKeys); 
-
-
   useEffect(() => {
     const initialQuantities = keys.map((num) => {
     const duplicatedKeys = savedKeys.filter((item) => item === num);
@@ -26,15 +22,6 @@ function Cart({setCartId, cartId}) {
     });
     setQuantity(initialQuantities);
   }, [savedKeys,cartId]);
-
-  // useEffect(() => {
-  // keys.map((num) => {
-  //   const findDuplicates = savedK => savedK.filter((item) => item === num)
-  //   const duplicatedKeys = findDuplicates(savedKeys)
-  //   const quantityLog = duplicatedKeys.length;
-  //   return setQuantity(quantityLog)
-  //   })
-  // }, []);
 
   function deleteItem(key) {
     const updatedKeys = savedKeys.filter(num => num != key)
@@ -57,13 +44,26 @@ function Cart({setCartId, cartId}) {
     const updateKeys = [...cartId, key]
     setCartId(updateKeys);
     localStorage.setItem('cartIdArr', JSON.stringify(updateKeys));
-    localStorage.setItem(`${key}`, JSON.stringify(val));
-    return navigate("/cart")
+    return localStorage.setItem(`${key}`, JSON.stringify(val));
   }
 
-  function deletingItem() {
+  function deletingItem(num) {
+    let updatedKeys = [];
 
+    if(savedKeys.includes(num)) {
+      updatedKeys = savedKeys.filter(id => id === num)
+      updatedKeys.pop()
+    } else {
+      null
+    }
+    let newArr = savedKeys.filter(id => id !== num)
+    const updatedArr = newArr.concat(updatedKeys).sort();
+    console.log(updatedArr)
+    setCartId(updatedArr)
+    console.log(updatedKeys)
+    return  localStorage.setItem('cartIdArr', JSON.stringify(updatedArr));
   }
+
   return (
     <div>
       <Link to="/">Home</Link> 
@@ -72,10 +72,6 @@ function Cart({setCartId, cartId}) {
       }
       {
        keys.map((num, index) => {
-        // const findDuplicates = savedKeys => savedKeys.filter((item) => item === num)
-        // const duplicatedKeys = findDuplicates(savedKeys)
-        // const quantity = duplicatedKeys.length;
-
         const cartData = JSON.parse(localStorage.getItem(`${num}`));
         return (
           <div>
@@ -83,9 +79,9 @@ function Cart({setCartId, cartId}) {
             <img src={cartData.image} alt="" />
             <h5>Quantity:{quantity[index]}</h5>
             <button onClick={() => addingItem(`${num}`, cartData)}>+</button>
-            <button>-</button>
+            <button onClick={() => deletingItem(num)}>-</button>
             <h5>${cartData.price}</h5>
-            <button onClick={() => deleteItem(cartData.id)}>Remove</button>
+            <button onClick={() => deleteItem(num)}>Remove</button>
           </div>
         )
        })
