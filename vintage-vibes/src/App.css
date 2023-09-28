@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-color:#ECECEC;
+}
+
 
 .login-btn {
   margin-bottom: 3%;

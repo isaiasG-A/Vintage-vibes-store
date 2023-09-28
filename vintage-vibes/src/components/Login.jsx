@@ -33,29 +33,37 @@ async function login(event) {
 }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <h3>username: mor_2314</h3>
-      <h4>password: 83r5^_</h4>
-      <form onSubmit={login}>
-        <label>
-          Username: 
-          <input 
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input 
-            type={"password"}
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            required
-          />
-        </label>
-        <button>Submit</button>
+    <div className='card' style={{width: "44%", margin: "0 auto"}}>
+      <h4 class="display-5">Login</h4>
+      <div className='card container mb-3' style={{width: "14rem"}}>
+        <h6>username: mor_2314</h6>
+        <h6>password: 83r5^_</h6>
+      </div>
+      <form className='form' onSubmit={login}>
+        <div class="mb-3">
+          <label class="form-label">
+            Username
+            <input 
+              class="form-control"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">
+            Password
+            <input
+               class="form-control"
+              type={"password"}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <button className='btn btn-outline-success mb-4'>Submit</button>
       </form>
     </div>
   )
