@@ -35,7 +35,7 @@ async function fetchItems() {
     }
   }
   fetchItems();
-},[])
+},[category])
 
   function logout() {
     localStorage.removeItem(token);
@@ -47,15 +47,15 @@ async function fetchItems() {
   console.log({...localStorage})
 
   return (
-    <>
+    <div className='container'>
     <Routes>
       <Route path='/' element={<Products items={items} getItemId={getItemId} setCategory={setCategory} savedUser={savedUser} logout={logout} accessToken={accessToken} setCartId={setCartId} cartId={cartId}/>}/>
       <Route path="/login" element={<Login setToken={setToken} setUser={setUser}/>}/>
-      <Route path='/details' element={<ProductDetails itemId={itemId} logout={logout}/>} />
+      <Route path='/details' element={<ProductDetails itemId={itemId} logout={logout} savedUser={savedUser} setCartId={setCartId} cartId={cartId}/>} />
       <Route path='/cart' element={<Cart setCartId={setCartId} cartId={cartId}/>}/>
       <Route path='/completed' element={<OrderCompleted />}/>
     </Routes>
-    </>
+    </div>
   )
 }
 

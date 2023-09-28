@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
-function ProductDetails({ itemId }) {
+function ProductDetails({ itemId, savedUser,setCartId, cartId }) {
   const [item, setItem] = useState({});
 
   useEffect(() => {
@@ -19,6 +19,13 @@ function ProductDetails({ itemId }) {
     getProduct()
   }, [])
 
+  function itemSetUp(key, val) {
+    const updateKeys = [...cartId, key]
+    setCartId(updateKeys);
+    localStorage.setItem('cartIdArr', JSON.stringify(updateKeys));
+    localStorage.setItem(`${key}`, JSON.stringify(val)); 
+  }
+
   return (
     <div>
       <h4>Category: {item.category}</h4>
@@ -27,9 +34,9 @@ function ProductDetails({ itemId }) {
       <h3> {item.description}</h3>
       <h5>${item.price}</h5>
       {
-        savedUser !== "undefined" ? <button>Add to Cart</button> : null
+        savedUser !== "undefined" ? <button onClick={() => itemSetUp(`${item.id}`, item)}>Add to Cart</button> : null
       }
-      <Link onClick={() => setItem({})} to="/">Home</Link> 
+      <Link to="/">Home</Link> 
     </div>
   )
 }

@@ -58,9 +58,7 @@ function Cart({setCartId, cartId}) {
     }
     let newArr = savedKeys.filter(id => id !== num)
     const updatedArr = newArr.concat(updatedKeys).sort();
-    console.log(updatedArr)
     setCartId(updatedArr)
-    console.log(updatedKeys)
     return  localStorage.setItem('cartIdArr', JSON.stringify(updatedArr));
   }
 
@@ -74,7 +72,7 @@ function Cart({setCartId, cartId}) {
        keys.map((num, index) => {
         const cartData = JSON.parse(localStorage.getItem(`${num}`));
         return (
-          <div>
+          <div key={cartData.id}>
             <h2>{cartData.title}</h2>
             <img src={cartData.image} alt="" />
             <h5>Quantity:{quantity[index]}</h5>

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate} from "react-router-dom";
 
 function Login({ setToken, setUser }) {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
 async function login(event) {
