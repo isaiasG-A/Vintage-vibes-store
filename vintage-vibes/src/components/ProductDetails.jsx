@@ -40,7 +40,7 @@ function ProductDetails({ itemId, savedUser,setCartId, cartId }) {
               <h5 className="card-text">${item.price}</h5>
             </div>
             {
-          savedUser !== "undefined" ? <button  class="btn btn-outline-success" style={{margin: "7px auto 8%", height: "8vh", width: "14vw"}} onClick={() => itemSetUp(`${item.id}`, item)}>Add to Cart</button> : null
+          savedUser !== "undefined" ? <button  class="btn btn-outline-success" style={{margin: "0 auto 8%", height: "8vh", width: "12vw"}} onClick={() => itemSetUp(`${item.id}`, item)}>Add to Cart</button> : null
         }
           </div>
         </div>
