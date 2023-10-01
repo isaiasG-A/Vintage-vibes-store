@@ -8,9 +8,9 @@ function OrderCompleted() {
     return navigate("/");
   }
   return (
-    <div>
+    <div className='order-completed'>
       <h1>Thank you for your Purchase!</h1>
-      <button onClick={homeNav}>Home</button>
+      <button className='btn btn btn-info' onClick={homeNav}>Home</button>
     </div>
   )
 }

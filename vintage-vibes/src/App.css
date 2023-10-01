@@ -17,3 +17,27 @@ body {
 .navbar {
   margin-bottom: 10%;
 }
+
+@media screen and (min-width: 1000px) {
+  .add-cart-btn {
+    margin: 0 auto 8%; 
+    height: 8vh; 
+    width: 12vw;
+    padding-bottom: 6%;
+  }
+
+  plus-minus-btns {
+    height: 6vh; 
+    width: 5vw
+  }
+
+  remove-btn {
+    margin: 7px auto 8%; 
+    height: 8vh; 
+    width: 14vw 
+  }
+
+  .order-completed {
+    padding: 0;
+  }
+}

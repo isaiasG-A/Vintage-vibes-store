@@ -28,9 +28,9 @@ function ProductDetails({ itemId, savedUser,setCartId, cartId }) {
 
   return (
     <div className='container'>
-      <Link  class="btn btn-outline-primary btn-lg mb-4 col-2" to="/">Home</Link> 
+      <Link  class="btn btn-outline-primary btn-lg mb-4" to="/">Home</Link> 
       <div className="row row-cols-2 row-cols-md-2 g-3 mt-2">
-        <div className='container-sm mb-5'>
+        <div className='container mb-5'>
           <div className="card h-90">
               <h6 className="card-text pt-2">Category: {item.category}</h6>
               <h5 className="card-title">{item.title}</h5>
@@ -40,7 +40,7 @@ function ProductDetails({ itemId, savedUser,setCartId, cartId }) {
               <h5 className="card-text">${item.price}</h5>
             </div>
             {
-          savedUser !== "undefined" ? <button  class="btn btn-outline-success" style={{margin: "0 auto 8%", height: "8vh", width: "12vw"}} onClick={() => itemSetUp(`${item.id}`, item)}>Add to Cart</button> : null
+          savedUser !== "undefined" ? <button  class="add-cart-btn  btn btn-outline-success" onClick={() => itemSetUp(`${item.id}`, item)}>Add to Cart</button> : null
         }
           </div>
         </div>

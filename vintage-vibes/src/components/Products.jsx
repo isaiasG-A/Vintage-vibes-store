@@ -23,10 +23,10 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
   return (
     <div>
       {
-        accessToken !== "undefined" ? <button className='btn btn-outline-danger ms-5  mb-4 col-2' onClick={() => logout()}>Logout</button> : <Link to="/login" className="login-btn btn btn-outline-primary btn-lg mb-4 col-2" disabled>Login</Link>
+        accessToken !== "undefined" ? <button className='btn btn-outline-danger ms-5  mb-4' onClick={() => logout()}>Logout</button> : <Link to="/login" className="login-btn btn btn-outline-primary btn-lg mb-4" disabled>Login</Link>
       }
       {
-         accessToken !== "undefined" ? <Link className="btn btn-outline-info  ms-5 mb-4 col-2" to="/cart">Cart</Link> : null
+         accessToken !== "undefined" ? <Link className="btn btn-outline-info  ms-5 mb-4" to="/cart">Cart</Link> : null
       }
       {
         savedUser !== "undefined" ? <h2>Hello, {savedUser}</h2>  : null
@@ -67,7 +67,7 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
                   </div>
                   <Link onClick={() => getItemId(id)} to="/details"><img className="img-fluid pb-5 "style={{width: "61%"}} src={image} alt="" /></Link>
                   {
-                  savedUser !== "undefined" ? <button class="btn btn-outline-success" style={{margin: "0 auto 8%", height: "8vh", width: "12vw"}} onClick={() => itemSetUp(`${id}`, item)}>Add to Cart</button> : null
+                  savedUser !== "undefined" ? <button class="add-cart-btn btn btn-outline-success" onClick={() => itemSetUp(`${id}`, item)}>Add to Cart</button> : null
                 }
                 </div>
               </div>
