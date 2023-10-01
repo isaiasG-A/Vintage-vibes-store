@@ -61,7 +61,7 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
           
           return <div className="row row-cols-2 row-cols-md-2 g-3" key={id}>
               <div className='container-sm mb-5'>
-                <div className="card h-90">
+                <div className="card h-90 pt-4">
                   <div className="card-body">
                     <h6 className="card-title">{title}</h6>
                   </div>

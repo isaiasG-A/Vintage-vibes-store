@@ -29,8 +29,8 @@ function ProductDetails({ itemId, savedUser,setCartId, cartId }) {
   return (
     <div className='container'>
       <Link  class="btn btn-outline-primary btn-lg mb-4" to="/">Home</Link> 
-      <div className="row row-cols-2 row-cols-md-2 g-3 mt-2">
-        <div className='container mb-5'>
+      <div className="row row-cols-2 row-cols-md-2 g-3">
+        <div className='container'>
           <div className="card h-90">
               <h6 className="card-text pt-2">Category: {item.category}</h6>
               <h5 className="card-title">{item.title}</h5>
