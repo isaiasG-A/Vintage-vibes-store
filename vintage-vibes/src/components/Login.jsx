@@ -33,9 +33,9 @@ async function login(event) {
 }
 
   return (
-    <div className='card' style={{width: "44%", margin: "0 auto"}}>
+    <div className='login-card card' style={{}}>
       <h4 class="display-5">Login</h4>
-      <div className='card container mb-3' style={{width: "14rem"}}>
+      <div className='card container mb-3'>
         <h6>username: mor_2314</h6>
         <h6>password: 83r5^_</h6>
       </div>

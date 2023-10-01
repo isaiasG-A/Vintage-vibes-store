@@ -59,7 +59,7 @@ function Products({ items, getItemId, setCategory, savedUser, logout, accessToke
           const title = item.title;
           const image = item.image;
           
-          return <div className="row row-cols-2 row-cols-md-2 g-3" key={id}>
+          return <div className="row row-cols-md-2 g-3 mt-4" key={id}>
               <div className='container-sm mb-5'>
                 <div className="card h-90 pt-4">
                   <div className="card-body">
